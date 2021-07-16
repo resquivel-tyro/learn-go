@@ -46,6 +46,14 @@ func TestHelloUsingSubtests(t *testing.T) {
 	 assertMessageIsCorrect(t, got, want)
  }
 
+func TestSayHelloInFrench(t *testing.T) {
+	got := Hello("Pierre", "French")
+	want := "Bonjour, Pierre"
+
+	assertMessageIsCorrect(t, got, want)
+}
+
+ //TODO how to make private
  func assertMessageIsCorrect(t testing.TB, got, want string) {
 	t.Helper()	// needed to tell the test suite that this method is a helper
 	// By doing this when it fails the line number reported will be in our function call rather than inside our test helper.
