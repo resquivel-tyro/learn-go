@@ -2,16 +2,27 @@ package arrays
 
 import "testing"
 
-func TestSum(t *testing.T) {
+func TestSumUsingArray(t *testing.T) {
 	// can also initialise arrays like so:
-	// numbers := [...]int{1, 2, 3, 4, 5}
-	numbers := [5]int{1, 2, 3, 4, 5}
+	// numbersArray := [...]int{1, 2, 3, 4, 5}
+	numbersArray := [5]int{1, 2, 3, 4, 5}
 
-	got := Sum(numbers)
+	got := SumArray(numbersArray)
 	want := 15
 
 	if got != want {
 		// %v is the default format
-		t.Errorf("got %d want %d given, %v", got, want, numbers)
+		t.Errorf("got %d want %d given, %v", got, want, numbersArray)
+	}
+}
+
+func TestSumUsingSlice(t *testing.T) {
+	numbersSlice := []int{1, 2, 3}
+
+	got := SumSlice(numbersSlice)
+	want := 6
+
+	if got != want {
+		t.Errorf("got %d want %d given, %v", got, want, numbersSlice)
 	}
 }
