@@ -9,6 +9,7 @@ const englishHelloPrefix = "Hello, "
 const spanishHelloPrefix = "Hola, "
 const frenchHelloPrefix = "Bonjour, "
 
+// Hello public function: starts with uppercase letter
 func Hello(name string, language string) string {
 	if name == "" {
 		name = world
@@ -16,7 +17,8 @@ func Hello(name string, language string) string {
 	return greetingPrefix(language) + name
 }
 
-func greetingPrefix(language string) (prefix string) {
+// private function: starts with lowercase letter
+func greetingPrefix(language string) (prefix string) {	// prefix defaults to ""
 	switch language {
 	case french:
 		prefix = frenchHelloPrefix
