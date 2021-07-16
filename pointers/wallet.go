@@ -1,6 +1,9 @@
 package pointers
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type Bitcoin int
 type Wallet struct {
@@ -21,8 +24,8 @@ type Stringer interface {
 //"a pointer to a wallet".
 
 
-func (w *Wallet) Deposit(b Bitcoin) {
-	w.balance += b
+func (w *Wallet) Deposit(amount Bitcoin) {
+	w.balance += amount
 	// the language permits us to write w.balance, without an explicit dereference like (*w).balance
 	// these are struct pointers and are automatically dereferenced
 }
@@ -33,8 +36,12 @@ func (w *Wallet) Balance() Bitcoin {
 	//	However, by convention you should keep your method receiver types the same for consistency.
 }
 
-func (w *Wallet) Withdraw(b Bitcoin) {
-	w.balance-=b
+func (w *Wallet) Withdraw(amount Bitcoin) error {
+	if amount > w.balance {
+		return errors.New("oh no")
+	}
+	w.balance-=amount
+	return nil
 }
 
 func (b Bitcoin) String() string {
