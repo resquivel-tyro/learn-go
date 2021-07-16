@@ -7,7 +7,7 @@ func TestPerimeter(t *testing.T) {
 	want := 40.0
 
 	if got != want {
-		t.Errorf("got %.2f want %.2f", got, want)
+		t.Errorf("got %.2f hasArea %.2f", got, want)
 	}
 }
 
@@ -16,7 +16,7 @@ func TestArea(t *testing.T) {
 		t.Helper()
 		got := shape.Area()
 		if got != want {
-			t.Errorf("got %g want %g", got, want)
+			t.Errorf("got %g hasArea %g", got, want)
 		}
 	}
 
@@ -33,4 +33,26 @@ func TestArea(t *testing.T) {
 
 		assertArea(t, circle, want)
 	})
+}
+
+// TestAreaUsingTableDrivenTests - same intent as function above
+func TestAreaUsingTableDrivenTests(t *testing.T) {
+	areaTests := []struct {
+		name    string
+		shape   Shape
+		hasArea float64
+	} {
+		{name: "Rectangle", shape: Rectangle{12, 6}, hasArea: 72.0},
+		{name: "Circle", shape: Circle{10}, hasArea: 314.1592653589793},
+		{name: "Triangle", shape: Triangle{12, 6}, hasArea: 36.0},
+	}
+
+	for _, testCase := range areaTests {
+		t.Run(testCase.name, func(t *testing.T) {
+			got := testCase.shape.Area()
+			if got != testCase.hasArea {
+				t.Errorf("%#v got %g hasArea %g", testCase.shape, got, testCase.hasArea)
+			}
+		})
+	}
 }

@@ -14,6 +14,9 @@ func (circle Circle) Area() float64 {
 	return math.Pi * circle.Radius * circle.Radius
 }
 
+func (t Triangle) Area() float64 {
+	return (t.Height * t.Base)/2
+}
 
 type Rectangle struct {
 	// A struct is just a named collection of fields where you can store data.
@@ -23,6 +26,12 @@ type Rectangle struct {
 type Circle struct {
 	Radius float64
 }
+
+type Triangle struct {
+	Base   float64
+	Height float64
+}
+
 type Shape interface {
 	Area() float64
 }
