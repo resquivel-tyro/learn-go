@@ -1,8 +1,14 @@
 package pointers
 
+import "fmt"
+
 type Bitcoin int
 type Wallet struct {
 	balance Bitcoin
+}
+
+type Stringer interface {
+	String() string
 }
 
 //When calling func (w Wallet) Deposit(amount int)
@@ -27,3 +33,6 @@ func (w *Wallet) Balance() (i Bitcoin) {
 	//	However, by convention you should keep your method receiver types the same for consistency.
 }
 
+func (b Bitcoin) String() string {
+	return fmt.Sprintf("%d BTC", b)
+}
