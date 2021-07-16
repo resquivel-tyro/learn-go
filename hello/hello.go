@@ -9,7 +9,7 @@ const englishHelloPrefix = "Hello, "
 const spanishHelloPrefix = "Hola, "
 const frenchHelloPrefix = "Bonjour, "
 
-// Hello public function: starts with uppercase letter
+// Hello is a public function: starts with uppercase letter
 func Hello(name string, language string) string {
 	if name == "" {
 		name = world
@@ -18,6 +18,8 @@ func Hello(name string, language string) string {
 }
 
 // private function: starts with lowercase letter
+// prefix is a named result parameter. this is not strictly required,
+// but recommended for larger functions for clarity
 func greetingPrefix(language string) (prefix string) {	// prefix defaults to ""
 	switch language {
 	case french:
