@@ -36,9 +36,10 @@ func (w *Wallet) Balance() Bitcoin {
 	//	However, by convention you should keep your method receiver types the same for consistency.
 }
 
+var ErrInsufficientFunds = errors.New("cannot withdraw, insufficient funds")
 func (w *Wallet) Withdraw(amount Bitcoin) error {
 	if amount > w.balance {
-		return errors.New("oh no")
+		return ErrInsufficientFunds
 	}
 	w.balance-=amount
 	return nil
