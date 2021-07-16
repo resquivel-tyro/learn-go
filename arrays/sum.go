@@ -17,3 +17,13 @@ func SumSlice(numbers []int) int {
 	}
 	return sum
 }
+
+func SumAll(numbersToSum ...[]int) []int {
+	lengthOfNumbersSlice := len(numbersToSum)
+	sums := make([]int, lengthOfNumbersSlice) // create a slice with starting capacity lengthOfNumbers
+
+	for i, numbersToSum := range numbersToSum {
+		sums[i] = SumSlice(numbersToSum)
+	}
+	return sums
+}
