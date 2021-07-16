@@ -27,3 +27,11 @@ func SumAll(numbersToSum ...[]int) []int {
 	}
 	return sums
 }
+
+func SumAllTails(numbersToSum ...[]int) (sums []int) {
+	for _, numbersToSum := range numbersToSum {
+		tail := numbersToSum[1:]
+		sums = append(sums, SumSlice(tail))
+	}
+	return sums
+}
